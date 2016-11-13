@@ -1,0 +1,36 @@
+{
+
+  project : {
+    name : 'GPU Fluid',
+    version : '0.1',
+    author : 'haxiomic',
+
+    app : {
+      name : 'GPUFluid',
+      package : 'com.haxiomic.gpufluid',
+      main: 'Main',
+      output: 'bin/',
+      codepaths: ['src'],
+      web : {
+        libs: { 
+          websocketConnection:'external/websocketConnection.js',
+          datGUI: 'external/dat.gui.min.js'
+        }
+      }
+    },
+
+    files: {
+      external: 'external/ => external/'
+    },
+
+    build : {      
+      dependencies : {
+        snow : '*',
+        shaderblox : '*',
+        gltoolbox : '*',
+      },
+    }
+
+  }
+
+}
