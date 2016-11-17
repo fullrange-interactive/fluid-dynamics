@@ -1411,6 +1411,7 @@ Main.prototype = $extend(lime.app.Application.prototype,{
             console.log("checking " + i1,{ fileName : "Main.hx", lineNumber : 103, className : "Main", methodName : "new"});
             console.log(_g.isMouseDowns[i1],{ fileName : "Main.hx", lineNumber : 104, className : "Main", methodName : "new"});
             if(!_g.isMouseDowns[i1]) {
+              window.setTouchIndicator(i1, {x: x, y: y});
               _g.userIds[userId] = i1;
               _g.isMouseDowns[i1] = true;
               _g.lastMousePositions[i1].setTo(transX * _g.fluid.aspectRatio,transY);
@@ -1428,6 +1429,7 @@ Main.prototype = $extend(lime.app.Application.prototype,{
         if(typeof _g.userIds[userId] !== 'undefined') {
           var i2 = _g.userIds[userId];
           _g.isMouseDowns[i2] = false;
+          window.removeTouchIndicator(i2);
           delete _g.userIds[userId];
         }
         break;
@@ -1435,6 +1437,7 @@ Main.prototype = $extend(lime.app.Application.prototype,{
         console.log("touch move",{ fileName : "Main.hx", lineNumber : 130, className : "Main", methodName : "new"});
         if(typeof _g.userIds[userId] !== 'undefined') {
           var i3 = _g.userIds[userId];
+          window.setTouchIndicator(i3, {x: x, y: y});
           _g.lastMousePositions[i3].setTo(_g.mousePositionsXY[i3].x,_g.mousePositionsXY[i3].y);
           _g.mousePositions[i3].setTo(transX * _g.fluid.aspectRatio,transY);
           _g.mousePositionsXY[i3] = { x : transX * _g.fluid.aspectRatio, y : transY};
@@ -1456,6 +1459,12 @@ Main.prototype = $extend(lime.app.Application.prototype,{
               var l = 0.02;
               var dx = Math.cos(a) * l;
               var dy = Math.sin(a) * l * _g.fluid.aspectRatio;
+
+              window.setTouchIndicator(i1, {x: x, y: y});
+              setTimeout(function () {
+                window.removeTouchIndicator(i1);
+              }, 100)
+
               console.log(a * 180 / Math.PI);
               _g.lastMousePositions[i1].setTo(transX * _g.fluid.aspectRatio,transY);
               _g.mousePositions[i1].setTo((transX + dx) * _g.fluid.aspectRatio,transY + dy);
@@ -1477,6 +1486,7 @@ Main.prototype = $extend(lime.app.Application.prototype,{
         if (_g.isMouseDowns[i]) {
           if (Date.now() - _g.mouseMoveTimes[i] > TOUCH_TIME_OUT) {
             _g.isMouseDowns[i] = false;
+            window.removeTouchIndicator(i);
           }
         }
       }

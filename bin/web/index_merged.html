@@ -84,11 +84,28 @@
             #flash.fade-out {
                 opacity: 0;
             }
+
+/*            .touch-indicator {
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                background: radial-gradient(#f00, rgba(35, 15, 82, 0));
+                top: 0;
+                left: 0;
+                border-radius: 50%;
+                box-sizing: border-box;
+                opacity: 0;
+                transition: opacity 0.2s linear;
+            }
+
+            .touch-indicator.visible {
+                opacity: 1;
+            }*/
         </style>
 
-        <script src="file:///home/pmw/repos/scheduler/jquery-3.1.1.min.js"></script>
+        <script src="./external/jquery-3.1.1.min.js"></script>
         <script src="file:///home/pmw/repos/scheduler/scheduler.js"></script>
-        
+    
         <script type="text/javascript" src="./external/websocketConnection.js"></script>
         <script type="text/javascript" src="./external/dat.gui.min.js"></script>
         <script type="text/javascript" src="./external/counterReset.js"></script>
@@ -102,6 +119,7 @@
             <div class="counter" id="counter-right">60</div>
         </div>
         <div id="flash"></div>
+        <!-- <div id="indicators"></div> -->
         <script type="text/javascript">
         lime.embed ("content", 0, 0, "FFFFFF");
         </script>
