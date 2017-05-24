@@ -1336,7 +1336,7 @@ var Main = function() {
   this.textureQuad = null;
   lime.app.Application.call(this);
   this.performanceMonitor = new PerformanceMonitor(35,null,2000);
-  this.set_simulationQuality(SimulationQuality.Medium);
+  this.set_simulationQuality(SimulationQuality.High);
   this.performanceMonitor.fpsTooLowCallback = $bind(this,this.lowerQualityRequired);
   var urlParams = js.Web.getParams();
   if(urlParams.exists("q")) {
